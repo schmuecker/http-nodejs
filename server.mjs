@@ -6,7 +6,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/ping", async (req, res) => {
+app.get("/", async (req, res) => {
   res.json({ hello: "world" });
 });
 
