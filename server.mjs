@@ -1,16 +1,17 @@
-import { createServer } from "http";
+import express from "express";
 
-createServer((req, res) => {
-  res.writeHead(200, { "Content-Type": "text/html" }); // http header
-  const url = req.url;
-  if (url === "/about") {
-    res.write("<h1>about us page<h1>"); //write a response
-    res.end(); //end the response
-  } else if (url === "/contact") {
-    res.write("<h1>contact us page<h1>"); //write a response
-    res.end(); //end the response
-  } else {
-    res.write("<h1>Hello World!<h1>"); //write a response
-    res.end(); //end the response
-  }
-}).listen(process.env.PORT);
+const app = express();
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.get("/ping", async (req, res) => {
+  res.json({ hello: "world" });
+});
+
+app.get("/ping", async (req, res) => {
+  res.json({ ping: "alive" });
+});
+app.listen(process.env.PORT, () => {
+  console.log('Server started on port', process.env.PORT)
+});
