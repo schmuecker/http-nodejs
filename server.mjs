@@ -13,6 +13,11 @@ app.get("/", async (req, res) => {
 app.get("/ping", async (req, res) => {
   res.json({ ping: "alive" });
 });
+
+app.get("/ping/pong", async (req, res) => {
+  res.json({ ping: "pong" });
+});
+
 app.listen(process.env.PORT, () => {
   console.log('Server started on port', process.env.PORT)
 });
